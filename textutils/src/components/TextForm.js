@@ -12,11 +12,33 @@ export default function TextForm(props) {
         let newText=text.toLowerCase();
         setText(newText);
     }
+
+    const handleClearClick=()=>{
+        let newText="";
+        setText(newText);
+
+    }
+
+    const handleTitleCaseClick=()=>{
+          let newText=text.split(".")
+          for (var i = 0; i < newText.length; i++) {
+           newText[i] = newText[i].charAt(0).toUpperCase() + newText[i].slice(1);
+        
+        }
+        
+        //Join all the elements of the array back into a string 
+        //using a blankspace as a separator 
+        const str2 = newText.join(".");
+        console.log(str2);
+        setText(str2);
+    }
+
     const handleOnChange=(event)=>{
         console.log("On Change");
         setText(event.target.value);
         // console.log(text);
     }
+    
     const [text, setText] = useState("");
 //text+=newtext
 //   text="next text"//wrong way to change state
@@ -32,14 +54,17 @@ export default function TextForm(props) {
             </div>
             <button className='btn btn-primary' onClick={handleUpClick}>Convert to Uppercase</button>
             <button className='btn btn-primary mx-2' onClick={handleLoClick}>Convert to Lowercase</button>
+            <button className='btn btn-primary mx-2' onClick={handleTitleCaseClick}>Title Case</button>
+            <button className='btn btn-primary mx-2' onClick={handleClearClick}>Clear Text</button>
+
 
         </div>
 
         <div className='container my-3'>
             <h1>Your text summary</h1>
-            <p>{text.split(" ").length} words and {text.length} characters</p>
-            <p>{0.008*text.split(" ").length} Minutes read</p>
-
+            <p>Words:{text.split(" ").length} and Characters:{text.length}</p>
+            <p>Minutes read:{0.008*text.split(" ").length}</p>
+            <p>Sentence:{text.split(".").length}</p>
             <h2>Preview</h2>
             <p>{text}</p>
         </div>
