@@ -19,6 +19,11 @@ export default function TextForm(props) {
 
     }
 
+
+    const handleCopy=()=>{
+        navigator.clipboard.writeText(text);
+    }
+
     const handleTitleCaseClick=()=>{
           let newText=text.split(".")
           for (var i = 0; i < newText.length; i++) {
@@ -55,6 +60,7 @@ export default function TextForm(props) {
             <button className='btn btn-primary' onClick={handleUpClick}>Convert to Uppercase</button>
             <button className='btn btn-primary mx-2' onClick={handleLoClick}>Convert to Lowercase</button>
             <button className='btn btn-primary mx-2' onClick={handleTitleCaseClick}>Title Case</button>
+            <button className='btn btn-primary mx-2' onClick={handleCopy}>Copy Text</button>
             <button className='btn btn-primary mx-2' onClick={handleClearClick}>Clear Text</button>
 
 
