@@ -19,7 +19,7 @@ export default function TextForm(props) {
 
     }
 
-
+    //to copy content written in text area
     const handleCopy=()=>{
         navigator.clipboard.writeText(text);
     }
