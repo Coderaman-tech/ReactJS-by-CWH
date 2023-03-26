@@ -37,10 +37,13 @@ function App() {
     <Navbar title="TextUtils" aboutText="About" mode={mode} modeText={modeText} toggleMode={toggleMode}/>
     <div className='container my-3'>
     <Switch>
-          <Route path="/about">
+    {/* use of exact in path
+      users-->Component1
+      /users/home -->Component2 */}
+          <Route exact path="/about">
             <About />
           </Route>
-          <Route path="/">
+          <Route exact path="/">
           <TextForm heading="Enter the text to analyze below" mode={mode}/>
           </Route>
       </Switch>
