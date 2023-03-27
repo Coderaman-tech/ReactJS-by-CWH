@@ -6,10 +6,7 @@ import TextForm from './components/TextForm';
 
 
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
+  Routes,Route
 } from "react-router-dom";
  
 
@@ -33,22 +30,20 @@ function App() {
   
   return (
     <>
-    <Router>
+    
     <Navbar title="TextUtils" aboutText="About" mode={mode} modeText={modeText} toggleMode={toggleMode}/>
     <div className='container my-3'>
-    <Switch>
+    <Routes>
     {/* use of exact in path
       users-->Component1
       /users/home -->Component2 */}
-          <Route exact path="/about">
-            <About />
-          </Route>
-          <Route exact path="/">
-          <TextForm heading="Enter the text to analyze below" mode={mode}/>
-          </Route>
-      </Switch>
+          <Route exact path="/about" element={<About/>}/>   
+          <Route exact path="/" element={<TextForm heading="Enter the text to analyze below" mode={mode}/>}
+          />
+          
+      </Routes>
       </div>
-    </Router>
+    
     </>
   );
 }
